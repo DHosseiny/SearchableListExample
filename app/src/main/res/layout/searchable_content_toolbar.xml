@@ -27,6 +27,7 @@
                 android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:textColor="@android:color/white"
+                android:textCursorDrawable="@null"
                 android:visibility="invisible" />
 
 
