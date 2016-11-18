@@ -24,7 +24,6 @@ public class SearchToolbar extends Toolbar {
     private ImageButton search;
     private EditText searchEditText;
     private TextView title;
-    private ImageButton back;
 
     private final TextWatcher countryCodeTextWatcher = new TextWatcher() {
         @Override
@@ -70,7 +69,7 @@ public class SearchToolbar extends Toolbar {
         title = (TextView) findViewById(R.id.button_title);
         search = (ImageButton) findViewById(R.id.button_search);
         searchEditText = (EditText) findViewById(R.id.search_edit_text);
-        back = (ImageButton) findViewById(R.id.button_back);
+        ImageButton back = (ImageButton) findViewById(R.id.button_back);
 
         back.setOnClickListener(new OnClickListener() {
             @Override
@@ -110,10 +109,14 @@ public class SearchToolbar extends Toolbar {
         return searching;
     }
 
-
     @Override
     public void setTitle(@StringRes int resId) {
-        this.title.setText(resId);
+        title.setText(resId);
+    }
+
+@Override
+    public void setTitle(CharSequence text) {
+        title.setText(text);
     }
 
 }

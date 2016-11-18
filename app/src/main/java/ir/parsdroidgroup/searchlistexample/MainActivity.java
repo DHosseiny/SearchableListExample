@@ -17,9 +17,9 @@ import ir.parsdroidgroup.searchlistexample.model.Contact;
 
 public class MainActivity extends AppCompatActivity {
 
-    List<Contact> contacts;
+    private List<Contact> contacts;
 
-    String[] names = new String[]{
+    private final String[] names = new String[]{
             "Sophia",
             "Emma",
             "Olivia",
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             "Madelyn",
             "Aubrey",
             "Layla"};
-    String[] phoneNumbers = new String[]{
+    private final String[] phoneNumbers = new String[]{
             "9123456787",
             "9123456789",
             "9123456788",
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SearchToolbar searchToolbar = (SearchToolbar) findViewById(R.id.toolbar_search);
-
+        searchToolbar.setTitle(R.string.app_name);
         contacts = new ArrayList<>(names.length);
         populateData();
 

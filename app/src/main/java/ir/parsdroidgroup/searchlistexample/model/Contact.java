@@ -9,8 +9,8 @@ import ir.parsdroidgroup.searchlistexample.adapter.SearchableModel;
 
 public class Contact implements SearchableModel<String> {
 
-    public String phoneNumber;
-    public String name;
+    public final String phoneNumber;
+    public final String name;
 
     public Contact(String phone, String name) {
         this.phoneNumber = phone;

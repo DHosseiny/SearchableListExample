@@ -16,12 +16,12 @@ import ir.parsdroidgroup.searchlistexample.SearchListener;
 public abstract class BaseSearchAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> implements SearchListener {
 
     //all of item given to adapter added to this list
-    private List<SearchableModel> allItems;
+    private final List<SearchableModel> allItems;
 
     //when search happened appropriate items remains in this list and others clears
-    List<SearchableModel> filteredItems;
+    final List<SearchableModel> filteredItems;
 
-    public BaseSearchAdapter(List<? extends SearchableModel> items) {
+    BaseSearchAdapter(List<? extends SearchableModel> items) {
         this.allItems = new ArrayList<>();
         this.allItems.addAll(items);
         this.filteredItems = new ArrayList<>();

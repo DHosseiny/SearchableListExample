@@ -46,8 +46,8 @@ public class ContactsAdapter extends BaseSearchAdapter<ContactsAdapter.ViewHolde
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name;
-        TextView phoneNumber;
+        final TextView name;
+        final TextView phoneNumber;
 
         ViewHolder(View itemView) {
 
