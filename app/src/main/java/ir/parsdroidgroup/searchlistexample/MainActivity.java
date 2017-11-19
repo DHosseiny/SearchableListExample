@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
+
+import com.izigzag.messenger.ui.adapter.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,16 +65,16 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        SearchToolbar searchToolbar = (SearchToolbar) findViewById(R.id.toolbar_search);
+        SearchToolbar searchToolbar = findViewById(R.id.toolbar_search);
         searchToolbar.setTitle(R.string.app_name);
         contacts = new ArrayList<>(names.length);
         populateData();
 
-        ContactsAdapter adapter = new ContactsAdapter(contacts);
+        ContactsAdapter adapter = new ContactsAdapter(contacts, (OnItemClickListener<Contact>) item -> Toast.makeText(MainActivity.this, "Name: " + item.getName() + " Phone number: " + item.getMsisdn(), Toast.LENGTH_LONG).show());
 
         searchToolbar.setSearchListener(adapter);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_contacts);
+        RecyclerView recyclerView = findViewById(R.id.recycler_contacts);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
