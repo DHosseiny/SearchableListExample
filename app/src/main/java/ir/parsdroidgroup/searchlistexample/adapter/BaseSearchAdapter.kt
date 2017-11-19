@@ -61,6 +61,10 @@ abstract class BaseSearchAdapter<T : Searchable<*>, VH : RecyclerView.ViewHolder
         notifyDataSetChanged()
     }
 
+    /**
+     * clients must use this method to add new items and remove previous items.
+     * remove and add items again.
+     */
     fun notifyDataSetChanged(allItems: List<T>) {
         this.allItems.clear()
         this.allItems.addAll(allItems)
@@ -69,6 +73,13 @@ abstract class BaseSearchAdapter<T : Searchable<*>, VH : RecyclerView.ViewHolder
         notifyDataSetChanged()
     }
 
+    /**
+     * Clients must use this method to add new item.
+     * if item <b>not</b> exist: check if list is in search state then add it in proper position,
+     * otherwise add it in end of the list.
+     * if item exist: remove it and add it again in same position or if adapter is in search state
+     * add it proper position
+     */
     fun notifyItemInserted(item: T) {
         var position = RecyclerView.NO_POSITION
         for (i in allItems.indices) {
@@ -103,6 +114,10 @@ abstract class BaseSearchAdapter<T : Searchable<*>, VH : RecyclerView.ViewHolder
         }
     }
 
+    /**
+     * use this method to notify item with payload.
+     * @param id item id [Searchable.itemID] to find item.
+     */
     fun notifyItemChangedInternal(id: Any, payload: Any?) {
 
         allItems.forEachIndexed { _, it ->
@@ -114,6 +129,9 @@ abstract class BaseSearchAdapter<T : Searchable<*>, VH : RecyclerView.ViewHolder
 
     }
 
+    /**
+     * to send notify to adapter when item found in [notifyItemChangedInternal]
+     */
     abstract fun notifyItemChanged(item: T, payload: Any?)
 
     private fun onSearch(item: T, exist: Boolean): Int {
